@@ -3,9 +3,9 @@ const { commentsController} = require("../controllers/comments.controller");
 
 const router = Router();
 
-router.post("/comments", commentsController.addComment);
-router.delete("/comments", commentsController.deleteComment);
-router.get("/comments", commentsController.getComment);
+router.post("/comments/news/:id", commentsController.addComment);
+router.delete("/comments/:id", commentsController.deleteComment);
+router.get("/comments/news/:id", commentsController.getComment);
 
 module.exports = router;
 

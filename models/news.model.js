@@ -6,9 +6,9 @@ const newsSchema = mongoose.Schema({
   category:{
     type: mongoose.SchemaTypes.ObjectId,
     ref: 'Category'
-  }
+  },
 });
 
-const news = mongoose.model('news', newsSchema);
+const News = mongoose.model('News', newsSchema);
 
-module.exports = news;
+module.exports = News;

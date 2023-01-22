@@ -1,4 +1,4 @@
-const Comment = require("../models/comments.model");
+const Comment = require("../models/Comment.model");
 
 module.exports.commentsController = {
   addComment: (req, res) => {
@@ -8,16 +8,18 @@ module.exports.commentsController = {
     newsId: req.params.id})
     .then((data) => {
       res.json(data);
-    });
+    })
+    .catch(() => res.json("error"))
   },
 
   deleteComment: (req, res) => {
-    Comment.findByIdAndRemove(req.params.id).then(() => {
+    Comment.findByIdAndDelete(req.params.id).then(() => {
       res.json("Комментарий удален");
-    });
+    })
+    .catch(() => res.json('error'))
   },
   getComment: (req, res) => {
-    Comment.find({NewsId: req.params.id}).then((data) => {
+    Comment.find({newsId: req.params.id}).then((data) => {
       res.json(data)}).catch(() => res.json('error')
     );
   },

@@ -1,25 +1,26 @@
-const Category = require("../models/categories.model");
+const Category = require("../models/Category.model");
 
 module.exports.categoriesController = {
   addCategory: (req, res) => {
     Category.create({ name: req.body.name})
     .then((data) => {
       res.json(data)
-    }).catch((data) => {
-        res.json(data)
+    }).catch(() => {
+        res.json("error")
     })
   },
 
   deleteCategory: (req, res) => {
-    Category.findByIdAndRemove(req.params.id).then(() => {
+    Category.findByIdAndDelete(req.params.id).then(() => {
       res.json("Категория удалена");
-    });
+    })
+    .catch(() => res.json("error"))
   },
   getCategory: (req, res) => {
-    Category.find().then(() => {
-      res.json("Категория возвращена");
-    });
-  },
+    Category.find({}).then((data) => {
+      res.json(data)})
+      .catch(() => res.json("error"))
+    }
+  };
 
   
-};
