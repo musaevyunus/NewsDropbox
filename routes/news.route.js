@@ -8,6 +8,6 @@ router.delete("/news/:id", newsController.deleteNews);
 router.patch("/news/:id", newsController.patchNews);
 router.get("/news/:id", newsController.getOneNews);
 router.get("/news", newsController.getNews);
-router.get("/news/category/:categoryid", newsController.getCatNews);
+router.get("/news/category/:categoryId", newsController.getCatNews);
 
 module.exports = router;

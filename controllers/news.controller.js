@@ -36,7 +36,7 @@ module.exports.newsController = {
   },
 
   getNews: (req, res) => {
-    News.find().populate('Category')
+    News.find().populate('category')
     .then((news) => {
       res.json(news);
     }).catch(() => res.json('error'))
@@ -44,7 +44,7 @@ module.exports.newsController = {
 
 
 getCatNews: (req, res) => {
-    News.find({categoryId: req.params.categoryId}).then((news) => {
+    News.find({category: req.params.categoryId}).then((news) => {
       res.json(news);
     }).catch(() => res.json('error'))
   },
